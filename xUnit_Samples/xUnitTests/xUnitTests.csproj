@@ -25,4 +25,8 @@
     <ProjectReference Include="..\Tasks\Tasks.csproj" />
   </ItemGroup>
 
+	<ItemGroup>
+		<None Update="JsonData\users.json" CopyToOutputDirectory="PreserveNewest" />
+	</ItemGroup>
+
 </Project>

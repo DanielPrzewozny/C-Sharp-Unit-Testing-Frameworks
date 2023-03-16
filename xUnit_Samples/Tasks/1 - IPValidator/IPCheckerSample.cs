@@ -9,7 +9,7 @@ public static class IPCheckerSample
 {
     public static void CheckIp()
     {
-        List<string> inputs = new List<string>()
+        var inputs = new List<string>()
         { 
             "192.168.2.5", 
             "172.15.5.1", 
