@@ -6,9 +6,6 @@ public static class TheOldestUserSample
 
     public static void DisplayTheOldestUser()
     {
-        if(!db.Any())
-            Console.WriteLine("No user exists on the list");
-
         var theOldestUser = db.GetTheOldestOne();
         if (theOldestUser != null)
             Console.WriteLine($"The oldest user is {theOldestUser.Name} {theOldestUser.Surname}. Age: {theOldestUser.GetUserAge()}");
@@ -24,9 +21,8 @@ public static class TheOldestUserSample
             return null;
         }
 
-        var firstUser = db.FirstOrDefault();
-        var ageOfFirstUser = firstUser.GetUserAge();
-        if (db.All(x => x.GetUserAge() == ageOfFirstUser))
+        var ageOfFirstUser = db.FirstOrDefault()?.GetUserAge();
+        if (ageOfFirstUser is not null && db.All(x => x.GetUserAge() == ageOfFirstUser))
         {
             Console.WriteLine("All users have the same age!");
             return null;

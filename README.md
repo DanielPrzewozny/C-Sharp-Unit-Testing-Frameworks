@@ -12,7 +12,7 @@ There are many unit testing frameworks available on the market and as I learn ne
 
 # xUnit samples:
 ## 1. IP validator
-A method that:
+Description::
 - takes a string
 - Verifies that the specified string is a valid IPv4 or IPv6 address
 - Returns true or false
