@@ -1,4 +1,5 @@
-using Samples._1___IPValidator;
+using System.Net.Sockets;
+using Tasks._1___IPValidator;
 
 namespace xUnitTests;
 
@@ -11,7 +12,7 @@ public class IPValidatorTest
     public void IsIPv4(string input, bool expectedResult)
     {
         //Act
-        bool isValid = input.IsIPv4Address();
+        var isValid = input.SpecifyKindOfIPAddress() == AddressFamily.InterNetwork;
 
         //Assert
         Assert.Equal(expectedResult, isValid);
@@ -24,7 +25,7 @@ public class IPValidatorTest
     public void IsIPv6(string input, bool expectedResult)
     {
         //Act
-        bool isValid = input.IsIPv6Address();
+        var isValid = input.SpecifyKindOfIPAddress() == AddressFamily.InterNetworkV6;
 
         //Assert
         Assert.Equal(expectedResult, isValid);

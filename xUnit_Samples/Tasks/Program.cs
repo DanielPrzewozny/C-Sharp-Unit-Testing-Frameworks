@@ -1,6 +1,6 @@
-﻿using Samples._1___IPValidator;
+﻿using Tasks._1___IPValidator;
 
-namespace Samples;
+namespace Tasks;
 
 internal class Program
 {
