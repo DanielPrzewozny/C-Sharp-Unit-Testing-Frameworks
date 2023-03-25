@@ -3,7 +3,7 @@ using xUnitTests.xUnitHelpers;
 
 namespace xUnitTests;
 
-public class TheOldestUserTest
+public class TheOldestUser_xUnit_Test
 {
     [Theory]
     [JsonDataFromFile<User>(filePath: "JsonData/users.json", expectedResult: 82)]
