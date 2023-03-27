@@ -5,7 +5,7 @@ VisualStudioVersion = 17.5.33424.131
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tasks", "Tasks\Tasks.csproj", "{9CC2A3C2-FBFB-4B0A-A7FF-7A2A5A08AACA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "xUnitTests", "xUnitTests\xUnitTests.csproj", "{14798198-DC4B-4F97-B613-513CE386ECD2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "xUnitTests", "xUnitTests\xUnitTests.csproj", "{14798198-DC4B-4F97-B613-513CE386ECD2}"
 	ProjectSection(ProjectDependencies) = postProject
 		{9CC2A3C2-FBFB-4B0A-A7FF-7A2A5A08AACA} = {9CC2A3C2-FBFB-4B0A-A7FF-7A2A5A08AACA}
 	EndProjectSection

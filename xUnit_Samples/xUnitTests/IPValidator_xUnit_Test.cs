@@ -3,7 +3,7 @@ using Tasks._1___IPValidator;
 
 namespace xUnitTests;
 
-public class IPValidatorTest
+public class IPValidator_xUnit_Test
 {
     [Theory]
     [InlineData("192.168.8.56", true)]
