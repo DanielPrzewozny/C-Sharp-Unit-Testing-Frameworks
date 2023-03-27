@@ -4,7 +4,7 @@ namespace Tasks._3___DateRange;
 
 public class DateTimeRange
 {
-    private List<DateTimeRange> _dateRanges = new List<DateTimeRange>();
+    internal List<DateTimeRange> _dateRanges = new List<DateTimeRange>();
 
     public DateTime End { get; set; }
 
@@ -12,8 +12,19 @@ public class DateTimeRange
 
     public DateTimeRange[] Add(DateTimeRange range)
     {
+        if (!_dateRanges.Any())
+            _dateRanges.Add(this);
+
         _dateRanges.Add(range);
-        return _dateRanges.ToArray();
+
+        var arr = _dateRanges.ToArray();
+        DateTimeRange[] ranges = new DateTimeRange[_dateRanges.Count];
+        int i = 0;
+        foreach (var _range in _dateRanges)
+        {
+            ranges[i++] = new DateTimeRange() { Start = _range.Start, End = _range.End };
+        }
+        return ranges;
     }
 
     public DateTimeRange[] Subtract(DateTimeRange range)
