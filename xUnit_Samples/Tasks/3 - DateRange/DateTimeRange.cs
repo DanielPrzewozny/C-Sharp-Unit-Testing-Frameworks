@@ -6,10 +6,20 @@ public class DateTimeRange
 {
     internal List<DateTimeRange> _dateRanges = new List<DateTimeRange>();
 
+    /// <summary>
+    /// Range start
+    /// </summary>
+    public DateTime Start { get; set; }
+    /// <summary>
+    /// Range end
+    /// </summary>
     public DateTime End { get; set; }
 
-    public DateTime Start { get; set; }
-
+    /// <summary>
+    /// Adds given range to current range
+    /// </summary>
+    /// <param name="range"></param>
+    /// <returns></returns>
     public DateTimeRange[] Add(DateTimeRange range)
     {
         if (!_dateRanges.Any())
@@ -17,7 +27,6 @@ public class DateTimeRange
 
         _dateRanges.Add(range);
 
-        var arr = _dateRanges.ToArray();
         DateTimeRange[] ranges = new DateTimeRange[_dateRanges.Count];
         int i = 0;
         foreach (var _range in _dateRanges)
@@ -27,6 +36,11 @@ public class DateTimeRange
         return ranges;
     }
 
+    /// <summary>
+    /// Subtracts given range from current range
+    /// </summary>
+    /// <param name="range"></param>
+    /// <returns></returns>
     public DateTimeRange[] Subtract(DateTimeRange range)
     {
         _dateRanges.Remove(range);
@@ -34,13 +48,10 @@ public class DateTimeRange
     }
 
     ///// <summary>
-    ///// Gets value indicating if current range is continuation of given date time range
+    ///// Merges current range with given range
+    ///// If ranges doesn't intersect, they are merged as longest period possible to create
     ///// </summary>
     ///// <param name="dateRange"></param>
-    ///// <returns></returns>
-    public Boolean IsContinuationOf(DateTimeRange dateRange)
-        => this.Start == dateRange.End || this.End == dateRange.Start;
-
     public DateTimeRange Merge(DateTimeRange dateRange)
     {
         this.Start = StartsWith(dateRange) ? dateRange.Start
@@ -54,39 +65,16 @@ public class DateTimeRange
         return this;
     }
 
-    /// <summary>
-    /// Returns value indicating if current range starts with given range
-    /// </summary>
-    /// <param name="range"></param>
-    /// <returns></returns>
-    public Boolean StartsWith(DateTimeRange range)
-        => this.Start >= range.Start && this.Start <= range.End;
-
-
-    /// <summary>
-    /// Returns value indicating if current range ends with given range
-    /// </summary>
-    /// <param name="range"></param>
-    /// <returns></returns>
-    public Boolean EndsWith(DateTimeRange range)
-        => this.End >= range.Start && this.End <= range.End;
-
     ///// <summary>
-    ///// Returns value indicating if current range is equal to given range
-    ///// </summary>
-    ///// <param name="range"></param>
-    ///// <returns></returns>
-    public Boolean IsEqualTo(DateTimeRange range)
-        => this.Start == range.Start && this.End == range.End;
-
-    ///// <summary>
-    ///// Return value indicating if current range contains given date
+    ///// Expands current range to given date
     ///// </summary>
     ///// <param name="date"></param>
     ///// <returns></returns>
-    public Boolean Contains(DateTime date)
-        => this.Start <= date && date <= this.End;
-
+    public DateTimeRange ExpandTo(DateTime date)
+    {
+        this.End = this.End > date ? this.End : date;
+        return this;
+    }
 
     ///// <summary>
     ///// Return value indicating if current range intersects with given range
@@ -103,5 +91,44 @@ public class DateTimeRange
     ///// <returns></returns>
     public Boolean Contains(DateTimeRange range)
         => Contains(range.Start) && Contains(range.End);
-}
 
+    ///// <summary>
+    ///// Returns value indicating if current range starts with given range
+    ///// </summary>
+    ///// <param name="range"></param>
+    ///// <returns></returns>
+    public Boolean StartsWith(DateTimeRange range)
+        => this.Start >= range.Start && this.Start <= range.End;
+
+    ///// <summary>
+    ///// Returns value indicating if current range ends with given range
+    ///// </summary>
+    ///// <param name="range"></param>
+    ///// <returns></returns>
+    public Boolean EndsWith(DateTimeRange range)
+        => this.End >= range.Start && this.End <= range.End;
+
+    ///// <summary>
+    ///// Gets value indicating if current range is continuation of given date time range
+    ///// </summary>
+    ///// <param name="dateRange"></param>
+    ///// <returns></returns>
+    public Boolean IsContinuationOf(DateTimeRange dateRange)
+        => this.Start == dateRange.End || this.End == dateRange.Start;
+
+    ///// <summary>
+    ///// Returns value indicating if current range is equal to given range
+    ///// </summary>
+    ///// <param name="range"></param>
+    ///// <returns></returns>
+    public Boolean IsEqualTo(DateTimeRange range)
+        => this.Start == range.Start && this.End == range.End;
+
+    ///// <summary>
+    ///// Return value indicating if current range contains given date
+    ///// </summary>
+    ///// <param name="date"></param>
+    ///// <returns></returns>
+    public Boolean Contains(DateTime date)
+        => this.Start <= date && date <= this.End;
+}
