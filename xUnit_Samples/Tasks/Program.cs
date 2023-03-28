@@ -24,15 +24,11 @@ internal class Program
         ranges = rangeA.Add(rangeC);
         int i = 0;
         foreach (var range in ranges)
-        {
             Console.WriteLine($"[{i++}]: Start: {range.Start}, End: {range.End}");
-        }
 
         Console.WriteLine("\n-------------\n\nSample4: Convert the number to binary format and then calculate max zero gap.\n");
         var numbers = new [] { 8833, 4368, 260 };
         foreach (var num in numbers)
-        {
             Console.WriteLine(num + ": " + BinaryExtensions.GetBinaryFormat(num) + ", max zero gap: " + BinaryExtensions.GetMaxBinaryGap(num));
-        }
     }
 }
