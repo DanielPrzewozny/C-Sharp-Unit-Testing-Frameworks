@@ -29,7 +29,10 @@ internal class Program
         }
 
         Console.WriteLine("\n-------------\n\nSample4: Convert the number to binary format and then calculate max zero gap.\n");
-        var number = 260;
-        Console.WriteLine(number + ": " + BinaryExtensions.GetBinaryFormat(number) + ", max zero gap: " + BinaryExtensions.GetMaxBinaryGap(number)); 
+        var numbers = new [] { 8833, 4368, 260 };
+        foreach (var num in numbers)
+        {
+            Console.WriteLine(num + ": " + BinaryExtensions.GetBinaryFormat(num) + ", max zero gap: " + BinaryExtensions.GetMaxBinaryGap(num));
+        }
     }
 }
